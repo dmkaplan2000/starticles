@@ -24,7 +24,7 @@ You access the template by one of two approaches:
 2) Via with command line with:
 
 ```r
-rmarkdown::draft("MYARTICLENAME.Rmd","generic_article","starticles")
+rmarkdown::draft("MYARTICLENAME.Rmd","generic_article","starticles",edit=FALSE)
 ```
 
-The latter approach will create a directory named `MYARTICLENAME` within which you will find the Rmarkdown file `MYARTICLENAME.Rmd`. This the file that should be edited to create your article.
+The latter approach will create a directory named `MYARTICLENAME` within which you will find the Rmarkdown file `MYARTICLENAME.Rmd`. This is the file that should be edited to create your article.

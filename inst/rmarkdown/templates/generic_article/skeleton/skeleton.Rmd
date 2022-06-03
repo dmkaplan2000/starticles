@@ -21,7 +21,7 @@ address:
 footnote:
   - code: corresp
     text: "Corresponding author. Email: david.kaplan@ird.fr"
-bibliography: ["mybibfile.bib"] # Better BibTeX for Zotero is your friend
+bibliography: ["mybibfile.bib"] # Replace with one or more of your own bibtex files. Better BibTeX for Zotero is your friend
 csl: dmk-format.csl # Use any CSL style. See https://www.zotero.org/styles for a good list. Ignored if citation_package: natbib
 link-citations: TRUE
 output:
@@ -45,7 +45,7 @@ endfloat: FALSE # Set to TRUE to turn on latex endfloat package to place figures
 #   - nomarkers # Default
 numberlines: FALSE
 authblk: TRUE # FALSE = author affiliations in footnotes; TRUE = author affiliations in a block below author names
-footnotehyper: FALSE # TRUE will give you enhanced table footnote capabilities. Set to FALSE to be able to use French blocks due to latex bug.
+footnotehyper: FALSE # TRUE will give you enhanced table footnote capabilities. Set to FALSE to be able to use French blocks. Needed due to what appears to be a latex bug.
 urlcolor: blue
 linkcolor: blue
 citecolor: blue
@@ -77,29 +77,34 @@ options(knitr.table.format="latex") # For kable tables to work without setting f
 
 <!---------------------- Abstract --------------------->
 
-::: {.renameableabstract data-latex="[ABSTRACT]" lang=en}
+::: {.abstract data-latex="" lang=en}
 *This is an abstract in italics.*
+
+This is the second paragraph not in italics.
 :::
 
-::: {.keywords data-latex="[Keywords (pargraph form)]" lang=en}
+<!-- Use class keywords to format keywords section -->
+::: {.keywords data-latex="" lang=en}
 One keyword; Yet another keyword
 :::
 
+<!-- Use class renameableabstract to give abstract a different title -->
 ::: {.renameableabstract data-latex="[\\textit{RÉSUMÉ}]" lang=fr}
-Ce résumé n'est pas en italique
+Ce résumé n'est pas en italique, mais le titre est en italique.
 :::
 
-::: {.keywordsinline data-latex="[Mots clés (en une seule ligne)]" lang=fr}
+<!-- We can give an alternate title to keywords section -->
+::: {.keywords data-latex="[Mots clés]" lang=fr}
 Un mot clé; Deux mots clés
 :::
 
 <!-- Define as portuguese as spanish causes weird failure -->
-<!-- Use class renameableabstract to give abstract a different title -->
-::: {.renameableabstract data-latex="[\\textit{RESUMEN}]" lang=pt}
+::: {.renameableabstract data-latex="[RESUMEN]" lang=pt}
 Todavía más resumenes.
 :::
 
-::: {.keywords data-latex="[Palabras claves]" lang=pt}
+<!-- Use class keywordsinline to place title immediately before keywords -->
+::: {.keywordsinline data-latex="[Palabras claves (en una sola linea)]" lang=pt}
 Una palabra clave; Dos palabras claves
 :::
 
@@ -179,11 +184,12 @@ Acknowledge people here. `{-}` useful to not number this section.
 
 # References {-}
 
+<!-- Use this magic to place references here. -->
 <div id="refs"></div>
 
 # (APPENDIX) Appendices {-}
 
-<!-- The above header does not appear in output -->
+<!-- The above header does not appear in output. Not exactly sure why. -->
 
 # Appendix A {-}
 
