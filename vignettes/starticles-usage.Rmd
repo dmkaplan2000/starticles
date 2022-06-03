@@ -1,0 +1,55 @@
+---
+title: "starticles: Usage introduction"
+author: "David M. Kaplan"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{starticles: Usage introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This documents provides a quick introduction to using the starticles generic scientific article Rmarkdown template for authoring scientific documents.
+
+## Installation of the starticles package
+
+The latest version of this package can be installed from Github executing the
+following command in R:
+
+```{r eval=FALSE}
+remotes::install_github("dmkaplan2000/starticles",build_vignettes=TRUE)
+```
+
+## Use of the template
+
+You can access the template by one of two approaches:
+
+1) Via Rstudio using `File` $\rightarrow$ `New file` $\rightarrow$ `R Markdown...` $\rightarrow$ `From Template` and choosing the `Generic scientific article {starticles}` template.
+
+2) Within an interactive R session with:
+
+```{r eval=FALSE}
+rmarkdown::draft("MYARTICLENAME.Rmd","generic_article","starticles",edit=FALSE)
+```
+
+The first approach will prompt you for the name of a directory where the generic article template will be installed.
+
+The second approach will create a directory named `MYARTICLENAME` within which you will find the Rmarkdown file `MYARTICLENAME.Rmd`.
+
+In both cases, there will be a directory containing the core Rmarkdown template document (extension `.Rmd`), as well as a LaTeX pandoc template (extension `.tex`), a sample BibTeX file (extension `.bib`) and a citation style file for formatting references (extension `.csl`). 
+
+The *Rmarkdown document (`.Rmd`)* is the principal file that should be edited to create your article. It contains numerous comments on how to use the format and should be largely self-explanatory if you are familiar with Rmarkdown. 
+
+The *LaTeX pandoc template (`.tex`)* should generally not be modified unless you are an advanced user. 
+
+The *BibTeX file (`.bib`)* should be replaced by one containing the references for your article and the appropriate entry of the YAML header of the Rmarkdown document should be modified to reflect the name of the BibTeX file. There are many ways to generate a BibTeX file, but I have found [Zotero](https://www.zotero.org/), [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/) and the R package [citr](https://github.com/crsh/citr) to be quite useful.
+
+The *citation style file (`.csl`)* provided with the package is quite functional, but many more formats are available at the [Zotero style repository](https://www.zotero.org/styles). The template also allows one to use the `natbib` citation style provided by LaTeX.
+

@@ -12,7 +12,7 @@ Description: Provides a generic, publisher-independent Rmarkdown template for wr
   the ability to place figures and tables at the end of the output PDF. Smart cross-referencing of
   figures, tables, equations and sections is provided using the bookdown package. See package
   README.md for basic package usage.
-License: GPL-3
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/dmkaplan2000/starticles
@@ -20,3 +20,4 @@ Depends: R (> 3.5.0)
 Imports: rmarkdown, bookdown, knitr
 Suggests: rticles
 VignetteBuilder: knitr
+RoxygenNote: 7.2.0
