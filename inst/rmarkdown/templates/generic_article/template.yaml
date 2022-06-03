@@ -1,0 +1,4 @@
+name: Generic scientific article
+description: >
+ A generic, publisher-independent Rmarkdown template for writing scientific papers and reports
+create_dir: true

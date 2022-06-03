@@ -1,0 +1,200 @@
+---
+title: PUT YOUR TITLE HERE
+author:
+  - name: David M. Kaplan
+    email: david.kaplan@ird.fr
+    affiliation:
+      - IRD
+      - MARBEC
+    footnote:
+      - corresp
+  - name: John Smith
+    email: john.smith@notreal.tv
+    affiliation: GU
+address:
+  - code: IRD
+    address: Institut de Recherche pour le Développement (IRD), av. Jean Monnet, CS 30171, 34203 Sète cédex, France
+  - code: MARBEC
+    address: MARBEC, University of Montpellier, CNRS, Ifremer, IRD, Sète, France
+  - code: GU
+    address: Generic University (GU), Nowhere, Nowhere
+footnote:
+  - code: corresp
+    text: "Corresponding author. Email: david.kaplan@ird.fr"
+bibliography: ["mybibfile.bib"] # Replace with one or more of your own bibtex files. Better BibTeX for Zotero is your friend
+csl: dmk-format.csl # Use any CSL style. See https://www.zotero.org/styles for a good list. Ignored if citation_package: natbib
+link-citations: TRUE
+output:
+  bookdown::pdf_document2:
+    toc: FALSE
+    keep_tex: TRUE
+    template: generic_article_template.tex
+    #md_extensions: "-autolink_bare_uris"
+    number_sections: TRUE
+    citation_package: default # Can also be "natbib"
+  bookdown::word_document2: 
+    # Produces largely readable output, though some cross-referencing may fail. Useful for collaboration.
+    toc: TRUE
+lang: en # Main document language in BCP47 format
+geometry: "margin=25mm"
+papersize: a4
+#linestretch: 2 # for double spacing
+endfloat: FALSE # Set to TRUE to turn on latex endfloat package to place figures and tables at end of document
+# endfloatoption: # See endfloat documentation for more possibilities
+#   - tablesfirst # Default
+#   - nomarkers # Default
+numberlines: FALSE
+authblk: TRUE # FALSE = author affiliations in footnotes; TRUE = author affiliations in a block below author names
+footnotehyper: FALSE # TRUE will give you enhanced table footnote capabilities. Set to FALSE to be able to use French blocks. Needed due to what appears to be a latex bug.
+urlcolor: blue
+linkcolor: blue
+citecolor: blue
+graphics: TRUE # Needed to be able to include images
+tables: TRUE # Needed to be able to include tables
+fancyhdr:
+  first:
+    headleft: "REPORT-NO-XXXX"
+    headright: "Kaplan et al. (2021)"
+    headrulewidth: 0pt
+    #footleft: A left foot
+    footrulewidth: 0pt
+  subsequent:
+    headleft: "NEXT-PAGE-HEADER-LEFT"
+    headright: "Kaplan et al. (2021)"
+    headrulewidth: 1pt
+    footrulewidth: 0pt
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE) # By default, hide code; set to TRUE to see code
+#knitr::opts_chunk$set(fig.pos = 'th') # Places figures at top or here
+knitr::opts_chunk$set(out.width = '100%', dpi=300,
+                      fig.width=8, fig.width=8) # Figure resolution and size
+knitr::opts_chunk$set(fig.env="figure") # Latex figure environment
+
+options(knitr.table.format="latex") # For kable tables to work without setting format option
+```
+
+<!---------------------- Abstract --------------------->
+
+::: {.abstract data-latex="" lang=en}
+*This is an abstract in italics.*
+
+This is the second paragraph not in italics.
+:::
+
+<!-- Use class keywords to format keywords section -->
+::: {.keywords data-latex="" lang=en}
+One keyword; Yet another keyword
+:::
+
+<!-- Use class renameableabstract to give abstract a different title -->
+::: {.renameableabstract data-latex="[\\textit{RÉSUMÉ}]" lang=fr}
+Ce résumé n'est pas en italique, mais le titre est en italique.
+:::
+
+<!-- We can give an alternate title to keywords section -->
+::: {.keywords data-latex="[Mots clés]" lang=fr}
+Un mot clé; Deux mots clés
+:::
+
+<!-- Define as portuguese as spanish causes weird failure -->
+::: {.renameableabstract data-latex="[RESUMEN]" lang=pt}
+Todavía más resumenes.
+:::
+
+<!-- Use class keywordsinline to place title immediately before keywords -->
+::: {.keywordsinline data-latex="[Palabras claves (en una sola linea)]" lang=pt}
+Una palabra clave; Dos palabras claves
+:::
+
+<!------------ Main text -------------------->
+
+# Introduction
+
+This is a generic, publisher-independent Rmarkdown template for writing 
+scientific papers and reports in Rmarkdown. The template allows for all the basic features of a
+scientific article, including a title page with author affiliations and footnotes possibly shown
+in two common formats, multi-language abstracts and keywords, page headers and footers, and 
+the ability to place figures and tables at the end of the output PDF. Smart cross-referencing of
+figures, tables, equations and sections is provided using the bookdown package.
+
+## Subsection {#ss}
+
+This is a subsection.
+
+# Citations
+
+Cite an article at the end of a sentence [@horvath2018dna]. Or you can be more explicit: @bahdanau2014neural did many great things.
+
+# Equations
+
+An inline equation: $E=mc^2$.
+
+An equation on its own line:
+
+$$
+E=mc^2
+$$
+
+A numbered equation that can be cross-referenced:
+
+\begin{equation}\label{eq:genius}
+E=mc^2
+\end{equation}
+
+
+# Figures
+
+The code here produces Fig \@ref(fig:fig1). Using `endfloat: TRUE` in the YAML header or appropriate figure and table placement options can improve placement of figures and table on the page. 
+
+(ref:capfig1) This is a figure caption written in markdown reference format.
+
+```{r fig1, fig.cap="(ref:capfig1)"}
+plot(1:10)
+```
+
+
+# Tables
+
+The code here produces Table \@ref(tab:tab1).
+
+```{r tab1}
+df = data.frame(id=1:3,name=letters[1:3])
+
+knitr::kable(df,caption="This is a table caption.",booktabs=TRUE)
+```
+
+
+# Cross-referencing
+
+Cross reference to a section: Section \@ref(figures).
+
+Cross reference to a name subsection: Section \@ref(ss).
+
+Cross reference to an equation: Eq. \@ref(eq:genius).
+
+Cross reference to a figure: Fig. \@ref(fig:fig1).
+
+Cross reference to a table: Table \@ref(tab:tab1).
+
+# Acknowledgements {-}
+
+Acknowledge people here. `{-}` useful to not number this section.
+
+# References {-}
+
+<!-- Use this magic to place references here. -->
+<div id="refs"></div>
+
+# (APPENDIX) Appendices {-}
+
+<!-- The above header does not appear in output. Not exactly sure why. -->
+
+# Appendix A {-}
+
+Some appendix text.
+
+# Appendix B {-}
+
+More appendix text.
