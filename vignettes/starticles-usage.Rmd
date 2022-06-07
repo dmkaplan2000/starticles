@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-This documents provides a quick introduction to using the starticles generic scientific article Rmarkdown template for authoring scientific documents.
+This documents provides a quick introduction to using the starticles generic scientific article [rmarkdown](https://cran.r-project.org/package=rmarkdown) template. Though the template can be used by itself for many types of scientific documents and likely for submitting publications to many journals, it is primarily intended as a starter format for writing a scientific publication before one has chosen a specific target journal. Once an article has been written, the format can be quickly adapted for use with the [rticles](https://cran.r-project.org/package=rticles) package (generally inside a [bookdown](https://cran.r-project.org/package=bookdown)`::pdf_document2` wrapper).
 
-## Installation of the starticles package
+# Installation of the starticles package
 
 The latest version of this package can be installed from Github executing the
 following command in R:
@@ -27,7 +27,7 @@ following command in R:
 remotes::install_github("dmkaplan2000/starticles",build_vignettes=TRUE)
 ```
 
-## Use of the template
+# Use of the template
 
 You can access the template by one of two approaches:
 
@@ -45,6 +45,8 @@ The second approach will create a directory named `MYARTICLENAME` within which y
 
 In both cases, there will be a directory containing the core Rmarkdown template document (extension `.Rmd`), as well as a LaTeX pandoc template (extension `.tex`), a sample BibTeX file (extension `.bib`) and a citation style file for formatting references (extension `.csl`). 
 
+## Template files
+
 The *Rmarkdown document (`.Rmd`)* is the principal file that should be edited to create your article. It contains numerous comments on how to use the format and should be largely self-explanatory if you are familiar with Rmarkdown. 
 
 The *LaTeX pandoc template (`.tex`)* should generally not be modified unless you are an advanced user. 
@@ -52,4 +54,13 @@ The *LaTeX pandoc template (`.tex`)* should generally not be modified unless you
 The *BibTeX file (`.bib`)* should be replaced by one containing the references for your article and the appropriate entry of the YAML header of the Rmarkdown document should be modified to reflect the name of the BibTeX file. There are many ways to generate a BibTeX file, but I have found [Zotero](https://www.zotero.org/), [Better BibTeX for Zotero](https://retorque.re/zotero-better-bibtex/) and the R package [citr](https://github.com/crsh/citr) to be quite useful.
 
 The *citation style file (`.csl`)* provided with the package is quite functional, but many more formats are available at the [Zotero style repository](https://www.zotero.org/styles). The template also allows one to use the `natbib` citation style provided by LaTeX.
+
+## Rendering PDF document from template
+
+Once the template has been created, you would modify the Rmarkdown document and render it as a PDF file using either the `Knit` button in Rstudio or via the command-line:
+
+```{r eval=FALSE}
+rmarkdown::render("MYARTICLENAME/MYARTICLENAME.Rmd")
+```
+
 
