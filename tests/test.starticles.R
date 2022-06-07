@@ -14,8 +14,7 @@ rmarkdown::draft("MYARTICLENAME.Rmd","generic_article","starticles",edit=FALSE)
 
 # Requires recent version of pandoc (provided by RStudio)
 if (rmarkdown::pandoc_available(version="2.17"))
-  rmarkdown::render("MYARTICLENAME/MYARTICLENAME.Rmd",
-                    envir=new.env(parent = globalenv()))
+  rmarkdown::render("MYARTICLENAME/MYARTICLENAME.Rmd")
 
 # Return to orignal workind directory ------------------
 setwd(owd)
